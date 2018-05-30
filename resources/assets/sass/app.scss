@@ -8,6 +8,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import '~admin-lte/dist/css/adminlte.min.css';
+@import '~admin-lte/plugins/font-awesome/css/font-awesome.css';
+@import '~admin-lte/plugins/datatables/dataTables.bootstrap4.css';
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
