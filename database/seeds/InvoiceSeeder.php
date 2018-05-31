@@ -16,7 +16,7 @@ class InvoiceSeeder extends \Illuminate\Database\Seeder
         DB::table('invoices');
 
         $array = array();
-        $file_handle = fopen(__DIR__.'/csv/books.csv','r');
+        $file_handle = fopen(__DIR__.'/csv/invoices.csv','r');
         while(!feof($file_handle)){
             array_push($array, fgetcsv($file_handle, 1024));
         }
