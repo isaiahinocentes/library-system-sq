@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInvoicesTable extends Migration
+class CreateForumsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateInvoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('invoices', function (Blueprint $table) {
+        Schema::create('forums', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer("person_id");
-            $table->double("amount");
-            $table->string("nature_payment");
-            $table->integer("book_id");
-            $table->integer("added_by");
+            $table->string("title");
+            $table->multiLineString("body");
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateInvoicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invoices');
+        Schema::dropIfExists('forums');
     }
 }

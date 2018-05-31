@@ -16,9 +16,9 @@ class CreateCirculationsTable extends Migration
             $table->increments('id');
             $table->string("person_id");
             $table->integer("book_id");
-            $table->timestamp("borrowed_at")->nullable();
-            $table->timestamp("return_by")->nullable();
-            $table->timestamp("returned_at")->nullable();
+            $table->string("borrowed_at")->nullable();
+            $table->string("return_by")->nullable();
+            $table->string("returned_at")->nullable();
             $table->integer("added_by");
             $table->timestamps();
         });
