@@ -9,7 +9,8 @@ class DatabaseSeeder extends Seeder
             [
                 BookSeeder::class,
                 CirculationSeeder::class,
-                InvoiceSeeder::class
+                InvoiceSeeder::class,
+                UserSeeder::class
             ]
         );
     }
