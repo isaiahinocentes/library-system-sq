@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+@extends('layouts.layout-login')
 
-    <link rel="stylesheet" href="{{ URL::asset('css/LoginStyle.css') }}">
-</head>
+{{--Form section for Login--}}
+@section('content')
 <body class="main">
 <div class="login-screen"></div>
 <div class="login-center">
@@ -63,16 +58,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-                                {{--Forgot Passwird--}}
-                                {{--<p><a href="#" class="forgot">Can't access your account?</a></p>--}}
-
-                                {{--Sign up--}}
-                                <p>
-                                    <strong>New to TimeInfo?</strong>
-                                    <br>
-                                    <a href="#" id="flip-btn" class="signup signup_link">
-                                        Sign up for a new account</a>
-                                </p>
                             </div>
                         </form>
                     </div>
@@ -131,39 +116,40 @@
         </div>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Flip/1.0.18/jquery.flip.js"></script>
+@endsection
 
-</body>
-</html>
+{{--Scripts Section | for register | flip--}}
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Flip/1.0.18/jquery.flip.js"></script>
+    <script>
 
-<script>
-
-    $().ready(function() {
-        $("#card").flip({
-            trigger: 'manual'
+        $().ready(function() {
+            $("#card").flip({
+                trigger: 'manual'
+            });
         });
-    });
 
 
-    $(".signup_link").click(function() {
+        $(".signup_link").click(function() {
 
-        $(".signin_form").css('opacity', '0');
-        $(".signup_form").css('opacity', '100');
+            $(".signin_form").css('opacity', '0');
+            $(".signup_form").css('opacity', '100');
 
 
-        $("#card").flip(true);
+            $("#card").flip(true);
 
-        return false;
-    });
+            return false;
+        });
 
-    $("#unflip-btn").click(function(){
+        $("#unflip-btn").click(function(){
 
-        $(".signin_form").css('opacity', '100');
-        $(".signup_form").css('opacity', '0');
+            $(".signin_form").css('opacity', '100');
+            $(".signup_form").css('opacity', '0');
 
-        $("#card").flip(false);
+            $("#card").flip(false);
 
-        return false;
+            return false;
 
-    });
-</script>
+        });
+    </script>
+@endsection
