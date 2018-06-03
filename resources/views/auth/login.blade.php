@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ URL::asset('css/LoginStyle.css') }}">
 </head>
 <body class="main">
-
 <div class="login-screen"></div>
 <div class="login-center">
     <div class="container min-height" style="margin-top: 20px;">
@@ -105,7 +104,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input type="connfirm password" class="form-control" placeholder="Confirm Password">
+                                    <input type="confirm password" class="form-control" placeholder="Confirm Password">
                                     <span class="input-group-addon">
                                           <i class="glyphicon glyphicon-lock"></i>
                                       </span>

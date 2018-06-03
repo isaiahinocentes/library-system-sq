@@ -1,15 +1,9 @@
 <?php
 
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-/**
- * Created by PhpStorm.
- * User: Isaiah
- * Date: 6/1/2018
- * Time: 9:03 AM
- */
-
-class UserSeeder
+class AccountSeeder extends Seeder
 {
     public function run(){
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
@@ -32,4 +26,5 @@ class UserSeeder
             }
         }
     }
+
 }
