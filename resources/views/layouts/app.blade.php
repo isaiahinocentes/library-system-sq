@@ -74,25 +74,32 @@
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             {{--List of Books link--}}
-                                            <a href="" class="nav-link">
+                                            <a href="{{ route('acq-list') }}" class="nav-link">
                                                 <i class="fa fa-circle-o nav-icon"></i>
                                                 <p>List of Books</p>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             {{--Add book link--}}
-                                            <a href="" class="nav-link">
+                                            <a href="{{ route('acq-book') }}" class="nav-link">
                                                 <i class="fa fa-circle-o nav-icon"></i>
-                                                <p>Manual Upload</p>
+                                                <p>Add Book</p>
                                             </a>
                                         </li>
-                                        <li class="nav-item">
+                                        {{--<li class="nav-item">--}}
+                                            {{--Add book link--}}
+                                            {{--<a href="" class="nav-link">--}}
+                                                {{--<i class="fa fa-circle-o nav-icon"></i>--}}
+                                                {{--<p>Manual Upload</p>--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
+                                        {{--<li class="nav-item">--}}
                                             {{--bulk upload link--}}
-                                            <a href="" class="nav-link">
-                                                <i class="fa fa-circle-o nav-icon"></i>
-                                                <p>Bulk Upoad</p>
-                                            </a>
-                                        </li>
+                                            {{--<a href="" class="nav-link">--}}
+                                                {{--<i class="fa fa-circle-o nav-icon"></i>--}}
+                                                {{--<p>Bulk Upoad</p>--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
                                     </ul>
                                 </li>
                                 {{-- //ACQUISITION GROUP --}}

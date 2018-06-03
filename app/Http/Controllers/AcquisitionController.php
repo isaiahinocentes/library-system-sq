@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\View\View;
 
-class BookController extends Controller
+class AcquisitionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +17,31 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $books = Book::all();
+        return view('home')
+            ->with('books', $books);
     }
+
+    /**
+     * Show form containing/or not the book fields
+     * @param <b>id</b>
+     * if id is set, update form
+     * if not, create form
+     * @return View
+     * Add or Edit Book form
+     */
+    public function book($id = null){
+        if(isset($id) or $id != null){
+            $book = Book::find($id);
+            return view('acquisition\acquisition-add')
+                ->with('id', $book->id)
+                ->with('book', $book);
+        } else {
+            return view('acquisition\acquisition-add');
+        }
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
