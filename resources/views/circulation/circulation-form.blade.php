@@ -6,16 +6,13 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Add book</div>
-
                     <div class="card-body">
                         @if(isset($id))
-
-                            <form method="POST" action="{{ route('acq-qry', ['id' => $id, 'added_by' => auth()->user()->id]) }}">
+                        <form method="POST" action="{{ route('circ-qry', ['id' => $id, 'added_by' => auth()->user()->id]) }}">
                         @else
-                            <form method="POST" action="{{ route('acq-qry', ['added_by' => auth()->user()->id]) }}">
+                        <form method="POST" action="{{ route('circ-qry', ['added_by' => auth()->user()->id]) }}">
                         @endif
-                            @csrf
-
+                        @csrf
                             {{-- Title --}}
                             <div class="form-group row">
                                 <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Book Title') }}</label>

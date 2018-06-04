@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Book;
+use App\Forum;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
-class AcquisitionController extends Controller
+class ForumController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,31 +14,12 @@ class AcquisitionController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
-        return view('home')
-            ->with('books', $books);
+        $forums = Forum::all();
+        //Remove this dd to continue code;
+        dd($forums);
+        return view('suggestion/suggestion-list')->
+            with('forums', $forums);
     }
-
-    /**
-     * Show form containing/or not the book fields
-     * @param <b>id</b>
-     * if id is set, update form
-     * if not, create form
-     * @return View
-     * Add or Edit Book form
-     */
-    public function book($id = null){
-        if(isset($id) or $id != null){
-            $book = Book::find($id);
-            return view('acquisition\acquisition-form')
-                ->with('id', $book->id)
-                ->with('book', $book);
-        } else {
-            return view('acquisition\acquisition-form');
-        }
-    }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -65,10 +45,10 @@ class AcquisitionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Book  $book
+     * @param  \App\Forum  $forum
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show(Forum $forum)
     {
         //
     }
@@ -76,10 +56,10 @@ class AcquisitionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Book  $book
+     * @param  \App\Forum  $forum
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit(Forum $forum)
     {
         //
     }
@@ -88,10 +68,10 @@ class AcquisitionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Book  $book
+     * @param  \App\Forum  $forum
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, Forum $forum)
     {
         //
     }
@@ -99,10 +79,10 @@ class AcquisitionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Book  $book
+     * @param  \App\Forum  $forum
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy(Forum $forum)
     {
         //
     }

@@ -38,9 +38,10 @@
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item ">
-                            <a href="" class="nav-link">Logout</a>
+                            <a href="{{ route('user-logout') }}" class="nav-link">Logout</a>
                         </li>
                     </ul>
+
                 </nav>
                 <!-- /.navbar -->
 
@@ -116,13 +117,18 @@
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             {{-- Circulation List link--}}
-                                            <a href="" class="nav-link">
+                                            <a href="{{ route('circ-list') }}" class="nav-link">
                                                 <i class="fa fa-circle-o nav-icon"></i>
                                                 <p>List of Reserved</p>
                                             </a>
+                                            {{-- Circulation Form link--}}
+                                            <a href="{{ route('circ-form') }}" class="nav-link">
+                                                <i class="fa fa-circle-o nav-icon"></i>
+                                                <p>Add Record</p>
+                                            </a>
                                         </li>
                                     </ul>
-                                </li>
+                            </li>
                                 {{-- //CIRCULATION GROUP --}}
 
                                 {{-- //RESERVATION GROUP --}}
@@ -137,7 +143,8 @@
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             {{-- On-Site Reservation Link --}}
-                                            <a href="" class="nav-link">
+
+                                            <a href="{{ route('res-list') }}" class="nav-link">
                                                 <i class="fa fa-circle-o nav-icon"></i>
                                                 <p>On-site Reservation</p>
                                             </a>
@@ -149,7 +156,7 @@
                                 {{-- SUGGESTION GROUP --}}
                                 <li class="nav-item">
                                     {{--SUGGESTION LINK--}}
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('for-list') }}" class="nav-link">
                                         <i class="nav-icon fa fa-comment"></i>
                                         <p>Suggestion</p>
                                     </a>

@@ -14,7 +14,22 @@ class CirculationController extends Controller
      */
     public function index()
     {
-        //
+        $circulations = Circulation::all();
+        return view('circulation/circulation-list')
+            ->with('circulations', $circulations);
+    }
+
+    public function form($id = null, $added_by = null, $returned_at = null){
+        //Id is not null, update form show
+        if(isset($id)){
+            $circulation = Circulation::find($id);
+            dd($circulation);
+            return view('circulation/circulation-form')
+                ->with('circulation', $circulation);
+        }
+        else{
+            return view('circulation/circulation-form');
+        }
     }
 
     /**

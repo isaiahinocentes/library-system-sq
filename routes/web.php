@@ -14,12 +14,21 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+//Authetication Routes
 Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')
+    ->name('user-logout');
+
+//Index Routes
+Route::prefix('OPAC')->group(function(){
+    Route::get('','OPACController@index')->name('OPAC-index');
+});
+
 Route::get('/', 'HomeController@index')->name('index');
-
-
 Route::get('/home', 'AcquisitionController@index')->name('home');
 
+
+//Acquisition Routes
 Route::prefix('acquisition')->group(function(){
     //Read
     Route::get('','AcquisitionController@index')->name('acq-list');
@@ -32,7 +41,8 @@ Route::prefix('acquisition')->group(function(){
     Route::post('query/{id?}/{added_by?}', 'AcquisitionController@query')->name('acq-qry');
 });
 
-/*Route::prefix('circulation')->group(function(){
+//Circulation Routes
+Route::prefix('circulation')->group(function(){
     //Read
     Route::get('','CirculationController@index')->name('circ-list');
     //Form for Edit and Create
@@ -41,6 +51,28 @@ Route::prefix('acquisition')->group(function(){
     Route::get('delete/{id}','CirculationController@destroy')->name('circ-delete');
 
     //Post Request after edit, add, delete
-    Route::post('query/{id?}/{added_by?}','CirculationController@query')->name('circ-qry');
-});*/
+    Route::post('query/{id?}/{added_by?}/{returned_at?}','CirculationController@query')->name('circ-qry');
+});
+
+//Reservation Routes
+Route::prefix('reservation')->group(function(){
+    //Show list of reserved Books
+    Route::get('',function(){
+        return "To be created";
+    })->name('res-list');
+    //Route::get('', 'ReservationController@index')->name('res-list');
+});
+
+//Suggestion Routes
+Route::prefix('suggestions')->group(function(){
+    //Show Forums/Suggestions
+    Route::get('','ForumController@index')->name('for-list');
+});
+
+//Reports Routes
+Route::prefix('reports')->group(function (){
+    Route::get('', 'ReportsController@index')->name('rep-list');
+});
+
+
 
