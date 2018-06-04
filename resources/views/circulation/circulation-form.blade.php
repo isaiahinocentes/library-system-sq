@@ -66,9 +66,9 @@
                                 <label for="date" class="col-md-4 col-form-label text-md-right">{{ __('Book Date') }}</label>
                                 <div class="col-md-6">
                                     @if(isset($id))
-                                        <input id="date" type="date" name="date" value="{{ $book->date }}" required>
+                                        <input id="date" type="number" name="date" value="{{ $book->date }}" required>
                                     @else
-                                        <input id="date" type="date" name="date" required>
+                                        <input id="date" type="number" name="date" required>
                                     @endif
                                 </div>
                             </div>

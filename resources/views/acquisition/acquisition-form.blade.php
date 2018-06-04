@@ -69,8 +69,7 @@
                                 <label for="date" class="col-md-4 col-form-label text-md-right">{{ __('Book Date') }}</label>
                                 <div class="col-md-6">
                                     @if(isset($id))
-                                        {{--\Carbon\Carbon::createFromDate($db->year,$db->month,$db->day)->format('Y-m-d')}}"--}}
-                                        <input id="date" type="text" name="date" value="{{ $book->date }}" required />
+                                        <input id="date" type="number" name="date" value="{{ $book->date }}" required />
                                     @else
                                         <input id="date" type="number" name="date" required>
                                     @endif
