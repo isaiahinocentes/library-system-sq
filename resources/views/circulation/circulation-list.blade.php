@@ -1,26 +1,28 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Circualtion - LMS')
+
+@section('content_header')
+    <h1>Circulation</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Circulation</a></li>
+        <li class="active">List of Reserved</li>
+    </ol>
+ 
+
+   
+@stop
 
 @section('content')
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-
-                <div class="col-sm-12">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Circulation List</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
+<div class="row"><br></div>
     <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">Circulations</h5>
+        <div class="box box-primary">
+            <div class="box-header">
+                <h5 class="box-title">Reservations</h5>
             </div>
-            <div class="card-body">
-                <table id="circulationsTable" class="table table-bordered table-striped">
+            <div class="box-body">
+                <table id="circulationsTable" class="table table-striped">
                     <thead>
                     <tr>
                         <th>Circulation ID</th>
@@ -68,11 +70,11 @@
                             @endif
 
                             <td>
-                                <a href="{{ route('circ-form', ['id' => $circulation->id, 'added_by' => auth()->user()->id]) }}">
-                                    <button> Edit </button>
+                                <a href="{{ route('circ-form', ['id' => $circulation->id, 'added_by' => auth()->user()->id]) }}" class="btn  btn-warning btn-xs">
+                                    <i class="fa fa-pencil"style="margin-right:4px"></i>Edit
                                 </a>
-                                <a href="">
-                                    <button> Delete </button>
+                                <a href="" class="btn  btn-danger btn-xs">
+                                    <i class="fa fa-trash"style="margin-right:4px"></i>Delete
                                 </a>
                             </td>
                         </tr>
@@ -83,9 +85,16 @@
         </div>
     </div>
 @endsection
-@section('scripts')
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script>
-        $('booksTable').DataTable();
+@section('css')
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+@stop
+
+@section('js')
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<script>
+        $('#circulationsTable').DataTable({
+
+        });
     </script>
 @endsection
