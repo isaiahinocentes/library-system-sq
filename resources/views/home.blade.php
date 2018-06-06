@@ -1,26 +1,28 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Library Management System')
+
+@section('content_header')
+    <h1>Acquisition</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Acquisition</a></li>
+        <li class="active">List of Books</li>
+    </ol>
+ 
+
+   
+@stop
 
 @section('content')
-<div class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-
-            <div class="col-sm-12">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Starter Page</li>
-                </ol>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-</div>
+<div class="row"><br></div>
 <div class="container">
-    <div class="card">
-        <div class="card-header">
-            <h5 class="card-title">Books</h5>
+    <div class="box box-primary">
+        <div class="box-header">
+            <h5 class="box-title">Books</h5>
         </div>
-        <div class="card-body">
-            <table id="booksTable" class="table table-bordered table-striped">
+        <div class="box-body">
+            <table id="booksTable" class="table table-striped">
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -47,11 +49,12 @@
                         @endphp
                         <td>{{ $book->created_at }}</td>
                         <td>
-                            <a href="{{ route('acq-book', ['id' => $book->id]) }}">
-                                <button> Edit </button>
+                            <a href="{{ route('acq-book', ['id' => $book->id]) }}" class="btn  btn-warning btn-xs">
+                                <i class="fa fa-pencil"style="margin-right:4px"></i>Edit
                             </a>
-                            <a href="">
-                                <button> Delete </button>
+                            &nbsp;
+                            <a href="" class="btn  btn-danger btn-xs">
+                                <i class="fa fa-trash"style="margin-right:4px"></i>Delete
                             </a>
                         </td>
                     </tr>
@@ -61,10 +64,23 @@
         </div>
     </div>
 </div>
+
 @endsection
-@section('scripts')
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script>
-        $('booksTable').DataTable();
-    </script>
+
+@section('css')
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+@stop
+
+@section('js')
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<script>
+    $(function() {
+        $('#booksTable').DataTable({
+            
+        });
+    });
+</script>
 @endsection
+
+    
