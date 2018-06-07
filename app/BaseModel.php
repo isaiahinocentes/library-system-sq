@@ -8,58 +8,34 @@ class BaseModel extends Model
 {
     public static function saveData($data){
         try {
+            $model = static::getInstance($data);
 
-            $query = static::getInstance($data);
-
-            $ctr = 0;
-
-            foreach ($query->fillable as $column){
-                if($column == "password"){
-                    $query[$column] = bcrypt($data[$ctr]);
-                } else {
-                    if($data[$ctr] === ""){
-                        echo $column." => NULL <br/>";
-                        $query[$column] = null;
-                    } else {
-                        echo $column." => ".$data[$ctr]."<br/>";
-                        $query[$column] = $data[$ctr];
-                    }
-                }
-                $ctr++;
+            foreach ($model->fillable as $column){
+                $model[$column] = array_pull($data, $column);
             }
 
-            echo "<hr/>";
-
-            $query->save();
-
-            if($query->save()){
-
+            if($model->save()){
+                //Get model name for redirect
+                $className = get_class($model);
+                $reflection = new \ReflectionClass($className);
+                $modelName = $reflection->getShortName();
                 return array(
-                    'id'        => $query->id,
+                    'id'        => $model->id,
                     'status'    => 'success',
                     'messages'  => 'Saved Successfully!',
+                    'model'     => $modelName,
                     'code'      => 200
                 );
-
             }else{
-
-                return array(
-                    'id'        => 0,
-                    'status'    => 'error',
-                    't'         => 'An Error has occured!',
-                    'messages'  => 'Please contact iOrthotic support. 1',
-                    'code'      => 400
-                );
-
+                throw new \Exception("Database Error");
             }
-
         } catch (\Exception $e){
-
             return ( array(
                 'id'        => 0,
                 'status'    => 'error',
                 't'         => 'An Error has occured!',
-                'messages'=> $e->getMessage(),
+                'messages'  => $e->getMessage(),
+                'cause'     => $e->getTrace(),
                 'code'      => 400
             ));
         }

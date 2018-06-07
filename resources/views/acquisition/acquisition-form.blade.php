@@ -5,14 +5,16 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Add book</div>
-
+                    @if(isset($id))
+                        <div class="card-header">Edit book</div>
+                    @else
+                         <div class="card-header">Add book</div>
+                    @endif
                     <div class="card-body">
                         @if(isset($id))
-
-                            <form method="POST" action="{{ route('acq-qry', ['id' => $id, 'added_by' => auth()->user()->id]) }}">
+                            <form method="POST" action="{{ route('acq-qry', ['id' => $id]) }}">
                         @else
-                            <form method="POST" action="{{ route('acq-qry', ['added_by' => auth()->user()->id]) }}">
+                            <form method="POST" action="{{ route('acq-qry') }}">
                         @endif
                             @csrf
 

@@ -108,13 +108,13 @@ return [
     */
 
     'menu' => [
-     
+
         'MANAGEMENT',
         [
             'text' => 'OPAC',
             'icon' => 'list-alt',
-            
-            
+
+
         ],
         [
             'text' => 'Acquisition',
@@ -129,18 +129,18 @@ return [
                     'submenu' => [
                         [
                             'text' => 'Manual Upload',
-                            'url'  => '#',
+                            'url'  => 'acquisition/book',
                         ],
                         [
                             'text'    => 'Bulk Upload',
                             'url'     => '#',
-                           
+
                         ],
-                       
+
                     ],
-                   
+
                 ],
-             
+
             ],
         ],
         [
@@ -154,9 +154,9 @@ return [
                 [
                     'text'    => 'Add Record',
                     'url' => 'circulation/record/',
-                   
+
                 ],
-             
+
             ],
         ],
         [
@@ -198,11 +198,11 @@ return [
             'icon' => 'file',
             'url' => '#',
         ],
-      
 
 
-       
-     
+
+
+
     ],
 
     /*

@@ -38,8 +38,11 @@ Route::prefix('acquisition')->group(function(){
     Route::get('delete', 'AcquisitionController@delete')->name('acq-delete');
 
     //Post Request after edit, add, delete
-    Route::post('query/{id?}/{added_by?}', 'AcquisitionController@query')->name('acq-qry');
+    Route::get('delete/{id}', 'AcquisitionController@destroy')->name('acq-del'); //WTF GET??????
+    Route::post('query/{id?}', 'AcquisitionController@query')->name('acq-qry');
+
 });
+Route::post('query/{model?}}{id?}/{added_by?}', 'QueryController@query')->name('qry');
 
 //Circulation Routes
 Route::prefix('circulation')->group(function(){
