@@ -113,6 +113,7 @@ return [
         [
             'text' => 'OPAC',
             'icon' => 'list-alt',
+            'url' => 'opac',
             
             
         ],
@@ -148,7 +149,7 @@ return [
             'icon' => 'clipboard',
             'submenu' => [
                 [
-                    'text' => 'List of Reserved',
+                    'text' => 'List of Borrowed',
                     'url'  => 'circulation',
                 ],
                 [
