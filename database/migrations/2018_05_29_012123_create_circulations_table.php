@@ -21,6 +21,7 @@ class CreateCirculationsTable extends Migration
             $table->string("returned_at")->nullable();
             $table->integer("added_by");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

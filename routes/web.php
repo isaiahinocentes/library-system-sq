@@ -40,9 +40,7 @@ Route::prefix('acquisition')->group(function(){
     //Post Request after edit, add, delete
     Route::get('delete/{id}', 'AcquisitionController@destroy')->name('acq-del'); //WTF GET??????
     Route::post('query/{id?}', 'AcquisitionController@query')->name('acq-qry');
-
 });
-Route::post('query/{model?}}{id?}/{added_by?}', 'QueryController@query')->name('qry');
 
 //Circulation Routes
 Route::prefix('circulation')->group(function(){
@@ -54,7 +52,8 @@ Route::prefix('circulation')->group(function(){
     Route::get('delete/{id}','CirculationController@destroy')->name('circ-delete');
 
     //Post Request after edit, add, delete
-    Route::post('query/{id?}/{added_by?}/{returned_at?}','CirculationController@query')->name('circ-qry');
+    Route::post('query/{id?}','CirculationController@query')->name('circ-qry');
+    Route::get('delete/{id}', 'CirculationController@destroy')->name('circ-del');
 });
 
 //Reservation Routes

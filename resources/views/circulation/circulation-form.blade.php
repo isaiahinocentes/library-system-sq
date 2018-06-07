@@ -5,73 +5,76 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Add book</div>
+                    @if(isset($id))
+                        <div class="card-header">Add Record</div>
+                    @else
+                        <div class="card-header">Edit Record</div>
+                    @endif
                     <div class="card-body">
                         @if(isset($id))
-                        <form method="POST" action="{{ route('circ-qry', ['id' => $id, 'added_by' => auth()->user()->id]) }}">
+                            <form method="POST" action="{{ route('circ-qry', ['id' => $id]) }}">
                         @else
-                        <form method="POST" action="{{ route('circ-qry', ['added_by' => auth()->user()->id]) }}">
+                            <form method="POST" action="{{ route('circ-qry') }}">
                         @endif
+
                         @csrf
-                            {{-- Title --}}
+                            {{-- borrower_id --}}
                             <div class="form-group row">
-                                <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Book Title') }}</label>
+                                <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Borrower ID') }}</label>
                                 <div class="col-md-6">
                                     @if(isset($id))
-                                        <input id="title" type="text" name="title" value="{{ $book->title }}" required>
+                                        <input id="person_id" type="text" name="person_id" value="{{ $circulation->person_id }}" required>
                                     @else
-                                        <input id="title" type="text" name="title" value="{{ old('title') }}" required>
+                                        <input id="person_id" type="text" name="person_id" value="{{ old('person_id') }}" required>
                                     @endif
                                 </div>
                             </div>
 
-                            {{-- Description desc --}}
+                            {{-- book_id --}}
                             <div class="form-group row">
-                                <label for="desc" class="col-md-4 col-form-label text-md-right">{{ __('Book Description') }}</label>
+                                <label for="desc" class="col-md-4 col-form-label text-md-right">{{ __('Book ID') }}</label>
                                 <div class="col-md-6">
                                     @if(isset($id))
-                                        <input id="desc" type="text" name="desc" value="{{ $book->desc }}" required>
+                                        <input id="book_id" type="number" name="book_id" value="{{ $circulation->book_id }}" required>
                                     @else
-                                        <input id="desc" type="text" name="desc" value="{{ old('desc') }}" required>
+                                        <input id="book_id" type="number" name="book_id" value="{{ old('book_id') }}" required>
                                     @endif
                                 </div>
                             </div>
 
-                            {{-- Author --}}
+                            {{-- Borrowed At --}}
                             <div class="form-group row">
-                                <label for="author" class="col-md-4 col-form-label text-md-right">{{ __('Book Author') }}</label>
+                                <label for="author" class="col-md-4 col-form-label text-md-right">{{ __('Borrowed At') }}</label>
                                 <div class="col-md-6">
                                     @if(isset($id))
-                                        <input id="author" type="text" name="author" value="{{ $book->author }}" required>
+                                        {{ $circulation->borrowed_at }}
                                     @else
-                                        <input id="author" type="text" name="author" value="{{ old('author') }}" required>
+                                        <input id="borrowed_at" type="date" name="borrowed_at" value="{{ \Carbon\Carbon::now()->format('m-d-Y') }}" required>
                                     @endif
                                 </div>
                             </div>
 
-                            {{-- Category --}}
+                            {{-- Return by--}}
                             <div class="form-group row">
-                                <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Category/ies') }}</label>
+                                <label for="author" class="col-md-4 col-form-label text-md-right">{{ __('Return by') }}</label>
                                 <div class="col-md-6">
                                     @if(isset($id))
-                                        <input id="category" type="text" name="category"  value="{{ $book->category }}">
+                                        {{ $circulation->return_by }}
                                     @else
-                                        <input id="category" type="text" name="category" required>
+                                        <input id="return_by" type="date" name="return_by" value="{{ \Carbon\Carbon::now()->format('m-d-Y') }}" required>
                                     @endif
                                 </div>
                             </div>
 
-                            {{-- Date --}}
-                            <div class="form-group row">
-                                <label for="date" class="col-md-4 col-form-label text-md-right">{{ __('Book Date') }}</label>
-                                <div class="col-md-6">
-                                    @if(isset($id))
-                                        <input id="date" type="number" name="date" value="{{ $book->date }}" required>
-                                    @else
-                                        <input id="date" type="number" name="date" required>
-                                    @endif
+                            {{-- Returned At--}}
+                            @if(isset($id))
+                                <div class="form-group row">
+                                    <label for="author" class="col-md-4 col-form-label text-md-right">{{ __('Returned At') }}</label>
+                                    <div class="col-md-6">
+                                            <input id="returned_at" type="date" name="returned_at" value="{{ \Carbon\Carbon::now()->format('m-d-Y') }}" required>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

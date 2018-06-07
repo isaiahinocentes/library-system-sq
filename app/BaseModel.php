@@ -11,19 +11,17 @@ class BaseModel extends Model
             $model = static::getInstance($data);
 
             foreach ($model->fillable as $column){
-                $model[$column] = array_pull($data, $column);
+                if(array_key_exists($column, $data)){
+                    $model[$column] = array_pull($data, $column);
+                }
             }
 
             if($model->save()){
-                //Get model name for redirect
-                $className = get_class($model);
-                $reflection = new \ReflectionClass($className);
-                $modelName = $reflection->getShortName();
+
                 return array(
                     'id'        => $model->id,
                     'status'    => 'success',
                     'messages'  => 'Saved Successfully!',
-                    'model'     => $modelName,
                     'code'      => 200
                 );
             }else{

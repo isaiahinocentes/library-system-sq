@@ -21,4 +21,11 @@ class Book extends BaseModel
     public static function getInstance($data){
         return ( isset($data['id']) ) ? Book::find($data['id']) : new Book() ;
     }
+
+    public function Circulations(){
+        return $this->belongsToMany('Circulation');
+    }
+    public function Reservations(){
+        //return $this->belongsToMany()
+    }
 }

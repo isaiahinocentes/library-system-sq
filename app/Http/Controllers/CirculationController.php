@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Circulation;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Library\ClassFactory as CF;
 
 class CirculationController extends Controller
 {
@@ -19,12 +21,13 @@ class CirculationController extends Controller
             ->with('circulations', $circulations);
     }
 
-    public function form($id = null, $added_by = null, $returned_at = null){
+    public function form($id = null){
+
         //Id is not null, update form show
         if(isset($id)){
             $circulation = Circulation::find($id);
-            dd($circulation);
             return view('circulation/circulation-form')
+                ->with('id', $id)
                 ->with('circulation', $circulation);
         }
         else{
@@ -32,69 +35,36 @@ class CirculationController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function query(Request $request, $id = null){
+        $attr = $request->all();
+
+        if(isset($id)){
+            $attr = array_add($attr,'id', $id);
+            $timestamp = Carbon::now();
+            $attr = array_add($attr, 'returned_at', $timestamp);
+        }
+        $attr = array_add($attr, 'returned_at', "");
+        $attr = array_add($attr, 'added_by', auth()->user()->id);
+
+        $result = CF::model('Circulation')->saveData($attr);
+
+        if($result['status'] == 'success'){
+            return redirect()->route('circ-list');
+        } else {
+
+            return redirect()->route('circ-list')
+                ->with('errors', true)
+                ->with('result', $result);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Circulation  $circulation
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Circulation $circulation)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Circulation  $circulation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Circulation $circulation)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Circulation  $circulation
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Circulation $circulation)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Circulation  $circulation
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Circulation $circulation)
-    {
-        //
+    public function destroy(Request $request, $id){
+        $model = CF::model('Circulation')::find($id);
+        if($model->delete()){
+            $request->session()->flash('alert-success', ' Record is deleted successfully.');
+        } else {
+            $request->session()->flash('alert-error', ' Record can\'t deleted');
+        }
+        return redirect()->route('circ-list');
     }
 }

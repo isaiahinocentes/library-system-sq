@@ -9,12 +9,13 @@
         <li><a href="#">Circulation</a></li>
         <li class="active">List of Reserved</li>
     </ol>
- 
 
-   
+
+
 @stop
 
 @section('content')
+
 <div class="row"><br></div>
     <div class="container">
         <div class="box box-primary">
@@ -44,17 +45,7 @@
                             <td>{{ $circulation->book_id }}</td>
                             <td>{{ $circulation->borrowed_at }}</td>
                             <td>{{ $circulation->return_by }}</td>
-                            @if(isset($circulation->returned_at))
-                                <td>{{ $circulation->returned_at }}</td>
-                            @else
-                                <td>
-                                @php
-                                $current_time = \Carbon\Carbon::now()->toDateTimeString();
-                                echo "<a href=\"route('circ-qry',['id' => $circulation->id, 'added_by' =>".auth()->user()->id.", 'returned_at' => $current_time])\">";
-                                echo "<button>RETURN BOOK</button></a>";
-                                @endphp
-                                </td>
-                            @endif
+                            <td>{{ $circulation->returned_at }}</td>
 
                             {{-- Get Username --}}
                             @php
@@ -70,10 +61,10 @@
                             @endif
 
                             <td>
-                                <a href="{{ route('circ-form', ['id' => $circulation->id, 'added_by' => auth()->user()->id]) }}" class="btn  btn-warning btn-xs">
+                                <a href="{{ route('circ-form', ['id' => $circulation->id]) }}" class="btn  btn-warning btn-xs">
                                     <i class="fa fa-pencil"style="margin-right:4px"></i>Edit
                                 </a>
-                                <a href="" class="btn  btn-danger btn-xs">
+                                <a href="{{ route('circ-del', ['id' => $circulation->id]) }}" class="btn  btn-danger btn-xs">
                                     <i class="fa fa-trash"style="margin-right:4px"></i>Delete
                                 </a>
                             </td>
