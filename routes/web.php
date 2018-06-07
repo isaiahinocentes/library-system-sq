@@ -14,19 +14,19 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-//Authetication Routes
+//Authentication Routes
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')
     ->name('user-logout');
 
 //Index Routes
-Route::prefix('OPAC')->group(function(){
-    Route::get('','OPACController@index')->name('OPAC-index');
-});
-
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/home', 'AcquisitionController@index')->name('home');
 
+//OPAC Routes
+Route::prefix('OPAC')->group(function(){
+    Route::get('','OPACController@index')->name('OPAC-index');
+});
 
 //Acquisition Routes
 Route::prefix('acquisition')->group(function(){
@@ -73,10 +73,3 @@ Route::prefix('suggestions')->group(function(){
 Route::prefix('reports')->group(function (){
     Route::get('', 'ReportsController@index')->name('rep-list');
 });
-
-
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
