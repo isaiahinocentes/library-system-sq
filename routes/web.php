@@ -73,18 +73,3 @@ Route::prefix('suggestion')->group(function(){
 Route::prefix('reports')->group(function (){
     Route::get('', 'ReportsController@index')->name('rep-list');
 });
-<<<<<<< HEAD
-
-Route::prefix('opac')->group(function (){
-    Route::get('', 'OPACController@index')->name('opac-list');
-    Route::get('getBook/{id?}','OPACController@getBook')->name('opac-book');
-});
-
-
-
-Auth::routes();
-
-Route::get('/home', 'AcquisitionController@index')->name('home');
-Route::get('', 'AcquisitionController@index')->name('home');
-=======
->>>>>>> 090ee2878fee3e160bda8117123666ebd1ffdeaa

@@ -15,34 +15,22 @@
 
 @section('content')
     <div class="container">
-<<<<<<< HEAD
-            <div style="margin: 0 auto; width: 80%;">
+            <div style="margin: 0 auto; width: 80%">
                 <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h1 class="box-title">Book</h1> 
-                    </div>
-
+                    @if(isset($id))
+                        <div class="box-header with-border">
+                            <div class="box-title">Edit Book</div>  
+                        </div>
+                    @else
+                        <div class="box-header with-border">
+                                <div class="box-title">Add Book</div>  
+                        </div>
+                    @endif
                     <div class="box-body">
                         @if(isset($id))
-
-                            <form class="form-horizontal" method="POST" action="{{ route('acq-qry', ['id' => $id, 'added_by' => auth()->user()->id]) }}">
+                            <form class="form-horizontal" method="POST" action="{{ route('acq-qry', ['id' => $id]) }}">
                         @else
-                            <form class="form-horizontal" method="POST" action="{{ route('acq-qry', ['added_by' => auth()->user()->id]) }}">
-=======
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    @if(isset($id))
-                        <div class="card-header">Edit book</div>
-                    @else
-                         <div class="card-header">Add book</div>
-                    @endif
-                    <div class="card-body">
-                        @if(isset($id))
-                            <form method="POST" action="{{ route('acq-qry', ['id' => $id]) }}">
-                        @else
-                            <form method="POST" action="{{ route('acq-qry') }}">
->>>>>>> 090ee2878fee3e160bda8117123666ebd1ffdeaa
+                            <form class="form-horizontal" method="POST" action="{{ route('acq-qry') }}">
                         @endif
                             @csrf
 
@@ -114,7 +102,6 @@
 
                         </form>
                     </div>
-                </div>
         </div>
     </div>
 @endsection

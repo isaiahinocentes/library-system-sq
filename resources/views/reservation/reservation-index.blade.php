@@ -25,7 +25,7 @@
             <table id="booksTable" class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Reservee Name</th>
+                    <th>Borrower Name</th>
                     <th>Book Title</th>
                     <th>Reservation Date</th>
                     <th>Reservation Expiration</th>

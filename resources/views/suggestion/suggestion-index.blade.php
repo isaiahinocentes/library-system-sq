@@ -29,7 +29,6 @@
             <div class="selection">
                 <select id ="bookSelect" class="form-control select2-container input-lg step2-select" style="width:100%" >
                     <option value="" disabled selected>Search book...</option>
-                    <option>Alaska</option>
                     <option>California</option>
                     <option>Delaware</option>
                     <option>Tennessee</option>
