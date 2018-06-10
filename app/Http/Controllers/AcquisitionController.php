@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Library\ClassFactory as CF;
 
 class AcquisitionController extends Controller
 {
@@ -39,71 +40,32 @@ class AcquisitionController extends Controller
         }
     }
 
+    public function query(Request $request, $id = null){
+        $attr = $request->all();
 
+        if(isset($id)){
+            $attr = array_add($attr,'id', $id);
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $attr = array_add($attr, 'added_by', auth()->user()->id);
+
+        $result = CF::model('Book')->saveData($attr);
+        if($result['status'] == 'success'){
+            return redirect()->route('acq-list');
+        } else {
+            return redirect()->route('acq-list')
+                ->with('errors', true)
+                ->with('result', $result);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Book $book)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Book $book)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Book $book)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Book $book)
-    {
-        //
+    public function destroy(Request $request, $id){
+        $model = CF::model('Book')::find($id);
+        if($model->delete()){
+            $request->session()->flash('alert-success', ' Record is deleted successfully.');
+        } else {
+            $request->session()->flash('alert-error', ' Record can\'t deleted');
+        }
+        return redirect()->route('acq-list');
     }
 }

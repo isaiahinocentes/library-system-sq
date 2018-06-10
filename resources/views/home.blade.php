@@ -9,9 +9,9 @@
         <li><a href="#">Acquisition</a></li>
         <li class="active">List of Books</li>
     </ol>
- 
 
-   
+
+
 @stop
 
 @section('content')
@@ -53,7 +53,7 @@
                                 <i class="fa fa-pencil"style="margin-right:4px"></i>Edit
                             </a>
                             &nbsp;
-                            <a href="" class="btn  btn-danger btn-xs">
+                            <a href="{{ route('acq-del', ['id' => $book->id]) }}" class="btn  btn-danger btn-xs">
                                 <i class="fa fa-trash"style="margin-right:4px"></i>Delete
                             </a>
                         </td>
@@ -77,10 +77,10 @@
 <script>
     $(function() {
         $('#booksTable').DataTable({
-            
+
         });
     });
 </script>
 @endsection
 
-    
+

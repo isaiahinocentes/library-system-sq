@@ -14,19 +14,19 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-//Authetication Routes
+//Authentication Routes
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')
     ->name('user-logout');
 
 //Index Routes
-Route::prefix('OPAC')->group(function(){
-    Route::get('','OPACController@index')->name('OPAC-index');
-});
-
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/home', 'AcquisitionController@index')->name('home');
 
+//OPAC Routes
+Route::prefix('OPAC')->group(function(){
+    Route::get('','OPACController@index')->name('OPAC-index');
+});
 
 //Acquisition Routes
 Route::prefix('acquisition')->group(function(){
@@ -38,7 +38,8 @@ Route::prefix('acquisition')->group(function(){
     Route::get('delete', 'AcquisitionController@delete')->name('acq-delete');
 
     //Post Request after edit, add, delete
-    Route::post('query/{id?}/{added_by?}', 'AcquisitionController@query')->name('acq-qry');
+    Route::get('delete/{id}', 'AcquisitionController@destroy')->name('acq-del'); //WTF GET??????
+    Route::post('query/{id?}', 'AcquisitionController@query')->name('acq-qry');
 });
 
 //Circulation Routes
@@ -51,7 +52,8 @@ Route::prefix('circulation')->group(function(){
     Route::get('delete/{id}','CirculationController@destroy')->name('circ-delete');
 
     //Post Request after edit, add, delete
-    Route::post('query/{id?}/{added_by?}/{returned_at?}','CirculationController@query')->name('circ-qry');
+    Route::post('query/{id?}','CirculationController@query')->name('circ-qry');
+    Route::get('delete/{id}', 'CirculationController@destroy')->name('circ-del');
 });
 
 //Reservation Routes
@@ -71,6 +73,7 @@ Route::prefix('suggestion')->group(function(){
 Route::prefix('reports')->group(function (){
     Route::get('', 'ReportsController@index')->name('rep-list');
 });
+<<<<<<< HEAD
 
 Route::prefix('opac')->group(function (){
     Route::get('', 'OPACController@index')->name('opac-list');
@@ -83,3 +86,5 @@ Auth::routes();
 
 Route::get('/home', 'AcquisitionController@index')->name('home');
 Route::get('', 'AcquisitionController@index')->name('home');
+=======
+>>>>>>> 090ee2878fee3e160bda8117123666ebd1ffdeaa

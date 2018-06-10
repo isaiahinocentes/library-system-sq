@@ -108,14 +108,19 @@ return [
     */
 
     'menu' => [
-     
+
         'MANAGEMENT',
         [
             'text' => 'OPAC',
             'icon' => 'list-alt',
+<<<<<<< HEAD
             'url' => 'opac',
             
             
+=======
+
+
+>>>>>>> 090ee2878fee3e160bda8117123666ebd1ffdeaa
         ],
         [
             'text' => 'Acquisition',
@@ -127,10 +132,26 @@ return [
                 ],
                 [
                     'text'    => 'Add Book',
+<<<<<<< HEAD
                     'url' => '#'
                    
+=======
+                    'submenu' => [
+                        [
+                            'text' => 'Manual Upload',
+                            'url'  => 'acquisition/book',
+                        ],
+                        [
+                            'text'    => 'Bulk Upload',
+                            'url'     => '#',
+
+                        ],
+
+                    ],
+
+>>>>>>> 090ee2878fee3e160bda8117123666ebd1ffdeaa
                 ],
-             
+
             ],
         ],
         [
@@ -144,9 +165,9 @@ return [
                 [
                     'text'    => 'Add Record',
                     'url' => 'circulation/record/',
-                   
+
                 ],
-             
+
             ],
         ],
         [
@@ -182,11 +203,11 @@ return [
             'icon' => 'file',
             'url' => '#',
         ],
-      
 
 
-       
-     
+
+
+
     ],
 
     /*

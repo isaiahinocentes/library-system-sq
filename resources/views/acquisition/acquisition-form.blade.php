@@ -15,6 +15,7 @@
 
 @section('content')
     <div class="container">
+<<<<<<< HEAD
             <div style="margin: 0 auto; width: 80%;">
                 <div class="box box-primary">
                     <div class="box-header with-border">
@@ -27,6 +28,21 @@
                             <form class="form-horizontal" method="POST" action="{{ route('acq-qry', ['id' => $id, 'added_by' => auth()->user()->id]) }}">
                         @else
                             <form class="form-horizontal" method="POST" action="{{ route('acq-qry', ['added_by' => auth()->user()->id]) }}">
+=======
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    @if(isset($id))
+                        <div class="card-header">Edit book</div>
+                    @else
+                         <div class="card-header">Add book</div>
+                    @endif
+                    <div class="card-body">
+                        @if(isset($id))
+                            <form method="POST" action="{{ route('acq-qry', ['id' => $id]) }}">
+                        @else
+                            <form method="POST" action="{{ route('acq-qry') }}">
+>>>>>>> 090ee2878fee3e160bda8117123666ebd1ffdeaa
                         @endif
                             @csrf
 

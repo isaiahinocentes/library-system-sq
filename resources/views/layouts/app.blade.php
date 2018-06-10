@@ -87,20 +87,6 @@
                                                 <p>Add Book</p>
                                             </a>
                                         </li>
-                                        {{--<li class="nav-item">--}}
-                                            {{--Add book link--}}
-                                            {{--<a href="" class="nav-link">--}}
-                                                {{--<i class="fa fa-circle-o nav-icon"></i>--}}
-                                                {{--<p>Manual Upload</p>--}}
-                                            {{--</a>--}}
-                                        {{--</li>--}}
-                                        {{--<li class="nav-item">--}}
-                                            {{--bulk upload link--}}
-                                            {{--<a href="" class="nav-link">--}}
-                                                {{--<i class="fa fa-circle-o nav-icon"></i>--}}
-                                                {{--<p>Bulk Upoad</p>--}}
-                                            {{--</a>--}}
-                                        {{--</li>--}}
                                     </ul>
                                 </li>
                                 {{-- //ACQUISITION GROUP --}}
