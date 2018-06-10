@@ -16,9 +16,8 @@ class ForumController extends Controller
     {
         $forums = Forum::all();
         //Remove this dd to continue code;
-        dd($forums);
-        return view('suggestion/suggestion-list')->
-            with('forums', $forums);
+        //dd($forums);
+        return view('suggestion/suggestion-index');
     }
 
     /**

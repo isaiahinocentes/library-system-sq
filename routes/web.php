@@ -57,14 +57,12 @@ Route::prefix('circulation')->group(function(){
 //Reservation Routes
 Route::prefix('reservation')->group(function(){
     //Show list of reserved Books
-    Route::get('',function(){
-        return "To be created";
-    })->name('res-list');
+    Route::get('','ReservationController@index')->name('res-list');
     //Route::get('', 'ReservationController@index')->name('res-list');
 });
 
 //Suggestion Routes
-Route::prefix('suggestions')->group(function(){
+Route::prefix('suggestion')->group(function(){
     //Show Forums/Suggestions
     Route::get('','ForumController@index')->name('for-list');
 });

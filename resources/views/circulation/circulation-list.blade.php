@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Circualtion - LMS')
+@section('title', 'Circulation - LMS')
 
 @section('content_header')
     <h1>Circulation</h1>

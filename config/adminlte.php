@@ -127,18 +127,7 @@ return [
                 ],
                 [
                     'text'    => 'Add Book',
-                    'submenu' => [
-                        [
-                            'text' => 'Manual Upload',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Bulk Upload',
-                            'url'     => '#',
-                           
-                        ],
-                       
-                    ],
+                    'url' => '#'
                    
                 ],
              
@@ -165,6 +154,10 @@ return [
             'icon' => 'bookmark',
             'submenu' => [
                 [
+                    'text' => 'List of Reservations',
+                    'url'  => 'reservation',
+                ],
+                [
                     'text' => 'On-site Reservation',
                     'url'  => 'reservation',
                 ],
@@ -182,17 +175,7 @@ return [
 
             ],
         ],
-        'ADMINISTRATION',
-        [
-            'text' => 'Settings',
-            'icon' => 'cogs',
-            'url' => '#',
-        ],
-        [
-            'text' => 'Accounts',
-            'icon' => 'user-plus',
-            'url' => '#',
-        ],
+        
         'REPORTS',
         [
             'text' => 'Statistics',
