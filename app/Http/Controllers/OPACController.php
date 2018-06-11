@@ -11,6 +11,7 @@ class OPACController extends Controller
         return view('opac/opac-index')->with('books', $books);
         //return view('OPAC/OPAC-index');
     }
+
     public function getBook($id = null){
         if(isset($id) or $id != null){
             $book = Book::find($id);
@@ -19,5 +20,9 @@ class OPACController extends Controller
             $book = null;
             return $book;
         }
+    }
+
+    public function query(Request $request){
+        dd($request->all());
     }
 }
