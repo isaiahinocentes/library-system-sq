@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Statistics - LMS')
+@section('title', 'Reports - LMS')
 
 @section('content_header')
-    <h1>Statistics</h1>
+    <h1>Reports</h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Statistics</a></li>
-        <li class="active">Reports</li>
+        <li><a href="#">Reports</a></li>
+        <li class="active">Statistics</li>
     </ol>
 
 
@@ -68,6 +68,6 @@
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 <script>
-    
+
 </script>
 @endsection
