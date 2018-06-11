@@ -113,6 +113,7 @@ return [
         [
             'text' => 'OPAC',
             'icon' => 'list-alt',
+            'url' => 'OPAC',
 
 
         ],
@@ -127,11 +128,7 @@ return [
                 [
                     'text'    => 'Add Book',
                     'url'  => 'acquisition/book',
-                      
-                   
-
                 ],
-
             ],
         ],
         [
@@ -158,11 +155,6 @@ return [
                     'text' => 'List of Reservations',
                     'url'  => 'reservation',
                 ],
-                [
-                    'text' => 'On-site Reservation',
-                    'url'  => 'reservation',
-                ],
-
             ],
         ],
         [
@@ -176,7 +168,7 @@ return [
 
             ],
         ],
-        
+
         'REPORTS',
         [
             'text' => 'Statistics',

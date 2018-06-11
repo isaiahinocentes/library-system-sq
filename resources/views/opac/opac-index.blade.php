@@ -9,9 +9,9 @@
         <li class="active">OPAC</li>
 
     </ol>
- 
 
-   
+
+
 @stop
 
 @section('content')
@@ -72,7 +72,7 @@
                     <input type="text" class="form-control" id="bookId" placeholder="Book ID" readOnly>
                   </div>
                 </div>
-               
+
                 <div class="form-group">
                   <label for="name" class="col-lg-2 control-label">Book Title</label>
 
@@ -101,9 +101,9 @@
                     <input type="text" class="form-control" id="studentId" placeholder="Student ID">
                   </div>
                 </div>
-               
+
               </div>
-            
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -126,7 +126,7 @@
 <script>
     $(function() {
         $('#booksTable').DataTable({
-            
+
         });
     });
 </script>
@@ -146,8 +146,8 @@
             }
         })
     }
-    
+
 </script>
 @endsection
 
-    
+

@@ -9,9 +9,9 @@
         <li><a href="#">Reservation</a></li>
         <li class="active">List of Reserved</li>
     </ol>
- 
 
-   
+
+
 @stop
 
 @section('content')
@@ -30,17 +30,16 @@
                     <th>Reservation Date</th>
                     <th>Reservation Expiration</th>
                     <th>Actions</th>
-                   
+
                 </tr>
                 </thead>
                 <tbody>
-            
+
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
 @endsection
 
 @section('css')
@@ -53,10 +52,10 @@
 <script>
     $(function() {
         $('#booksTable').DataTable({
-            
+
         });
     });
 </script>
 @endsection
 
-    
+
