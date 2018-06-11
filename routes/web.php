@@ -24,8 +24,9 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('/home', 'AcquisitionController@index')->name('home');
 
 //OPAC Routes
-Route::prefix('OPAC')->group(function(){
+Route::prefix('opac')->group(function(){
     Route::get('','OPACController@index')->name('OPAC-index');
+    Route::get('getBook/{id?}','OPACController@getBook')->name('OPAC-book');
 });
 
 //Acquisition Routes

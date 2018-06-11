@@ -8,7 +8,7 @@ class OPACController extends Controller
 {
     public function index(){
         $books = Book::all();
-        return view('opac\opac-index')->with('books', $books);
+        return view('opac/opac-index')->with('books', $books);
         //return view('OPAC/OPAC-index');
     }
     public function getBook($id = null){

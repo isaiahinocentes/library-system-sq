@@ -113,7 +113,7 @@ return [
         [
             'text' => 'OPAC',
             'icon' => 'list-alt',
-
+            'url' => 'opac',
 
         ],
         [
