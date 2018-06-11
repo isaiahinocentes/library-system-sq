@@ -70,7 +70,7 @@
                   <label for="name" class="col-lg-2 control-label">Book Id</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="book_id" placeholder="Book ID" readOnly>
+                    <input type="text" class="form-control" id="book_id" name="book_id" placeholder="Book ID" readonly="readonly">
                   </div>
                 </div>
 
@@ -78,28 +78,28 @@
                   <label for="name" class="col-lg-2 control-label">Book Title</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="bookTitle" placeholder="Book Title" readOnly>
+                    <input type="text" class="form-control" id="bookTitle" name="book_title" placeholder="Book Title" readonly="readonly">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="name" class="col-lg-2 control-label">Author</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="bookAuthor" placeholder="Author" readOnly>
+                    <input type="text" class="form-control" id="bookAuthor" name="book_author" placeholder="Author" readonly="readonly">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="name" class="col-sm-2 control-label">Name</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" placeholder="Name">
+                    <input type="text" class="form-control" id="name" name="user_name" placeholder="Name">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="studentId" class="col-sm-2 control-label">Student ID</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="studentId" placeholder="Student ID">
+                    <input type="text" class="form-control" id="studentId" name="user_id" placeholder="Student ID">
                   </div>
                 </div>
 
@@ -140,13 +140,16 @@
             data: "",
             success: function(data) {
                 console.log(data);
-                $('#bookId').val(data.id)
+                $('#name').val("");
+                $('#studentId').val("");
+                $('#book_id').val(data.id)
                 $('#bookTitle').val(data.title)
                 $('#bookAuthor').val(data.author)
                 $('#borrowModal').modal('show');
             }
         })
     }
+
 
 </script>
 @endsection
