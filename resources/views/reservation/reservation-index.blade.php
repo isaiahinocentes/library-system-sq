@@ -25,8 +25,9 @@
             <table id="booksTable" class="table table-striped">
                 <thead>
                 <tr>
+                    <th>Borrower ID</th>
                     <th>Borrower Name</th>
-                    <th>Book Title</th>
+                    <th>Book ID</th>
                     <th>Reservation Date</th>
                     <th>Reservation Expiration</th>
                     <th>Actions</th>
@@ -34,7 +35,22 @@
                 </tr>
                 </thead>
                 <tbody>
-
+                @foreach($reservations as $res)
+                    <tr>
+                        <td>{{ $res->borrower_id}}</td>
+                        <td>{{ $res->borrower_name }}</td>
+                        <td>{{ $res->book_id}}</td>
+                        <td>{{ $res->reservation_date }}</td>
+                        <td>{{ $res->reservation_expiration }}</td>
+                        <td>
+                            <a href="{{ route('res-del', ['id' => $res->id]) }}">
+                                <button>
+                                    Release
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

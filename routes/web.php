@@ -61,6 +61,8 @@ Route::prefix('reservation')->group(function(){
     //Show list of reserved Books
     Route::get('','ReservationController@index')->name('res-list');
     //Route::get('', 'ReservationController@index')->name('res-list');
+
+    Route::get('release/{id}', 'ReservationController@destroy')->name('res-del');
 });
 
 //Suggestion Routes

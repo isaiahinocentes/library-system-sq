@@ -12,7 +12,6 @@ return [
     | You can optionally also specify a title prefix and/or postfix.
     |
     */
-
     'title' => 'AdminLTE 2',
 
     'title_prefix' => '',
@@ -29,7 +28,6 @@ return [
     | variant, used for the mini side bar. Make it 3 letters or so
     |
     */
-
     'logo' => '<b>Library</b> Management',
 
     'logo_mini' => '<b>L</b>M',
@@ -44,7 +42,6 @@ return [
     | ligth variant: blue-light, purple-light, purple-light, etc.
     |
     */
-
     'skin' => 'blue',
 
     /*
@@ -57,7 +54,6 @@ return [
     | removes the sidebar and places your menu in the top navbar
     |
     */
-
     'layout' => null,
 
     /*
@@ -70,7 +66,6 @@ return [
     | this is compatible with layouts except top-nav layout option
     |
     */
-
     'collapse_sidebar' => false,
 
     /*
@@ -84,7 +79,6 @@ return [
     | Set register_url to null if you don't want a register link.
     |
     */
-
     'dashboard_url' => 'home',
 
     'logout_url' => 'logout',
@@ -106,17 +100,14 @@ return [
     | layout. The 'can' is a filter on Laravel's built in Gate functionality.
     |
     */
-
     'menu' => [
-
         'MANAGEMENT',
         [
             'text' => 'OPAC',
             'icon' => 'list-alt',
             'url' => 'OPAC',
-
-
         ],
+
         [
             'text' => 'Acquisition',
             'icon' => 'folder-open',
@@ -131,6 +122,7 @@ return [
                 ],
             ],
         ],
+
         [
             'text' => 'Circulation',
             'icon' => 'clipboard',
@@ -147,6 +139,7 @@ return [
 
             ],
         ],
+
         [
             'text' => 'Reservation',
             'icon' => 'bookmark',
@@ -157,6 +150,7 @@ return [
                 ],
             ],
         ],
+
         [
             'text' => 'Suggestion',
             'icon' => 'comment',
@@ -175,11 +169,6 @@ return [
             'icon' => 'file',
             'url' => '#',
         ],
-
-
-
-
-
     ],
 
     /*
@@ -193,7 +182,6 @@ return [
     | built in Gate functionality
     |
     */
-
     'filters' => [
         JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
@@ -212,7 +200,6 @@ return [
     | to include the JavaScript file from a CDN via a script tag.
     |
     */
-
     'plugins' => [
         'datatables' => true,
         'select2'    => true,
