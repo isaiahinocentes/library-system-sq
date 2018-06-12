@@ -10,12 +10,15 @@ class OPACController extends Controller
 {
     public function index(){
         $books = Book::all();
-        $reservations = Reservation::all();
-        //dd($reservations);
-        //foreach ($reservations->Book as $book)
+        $count = 0;
+        foreach($books as $book){
+            if(Book::isReserved($book->id))
+                $count++;
+        }
+        //dd($count);
 
-        return view('opac/opac-index')->with('books', $books);
-        //return view('OPAC/OPAC-index');
+        return view('opac/opac-index')
+            ->with('books', $books);
     }
 
     public function getBook($id = null){
@@ -28,10 +31,15 @@ class OPACController extends Controller
         }
     }
 
+    public function showCommentForm(){
+        return view('opac/opac-comment-form');
+    }
+
     public function query(Request $request){
         $data = $request->all();
         $data = Reservation::validate($data);
-        $result = CF::model('Reservation')->saveData($data);
+        $result = CF::model('Forum')->saveData($data);
+        dd($result);
         return redirect()->route('OPAC-index')
             ->with('result', $result);
     }

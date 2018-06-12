@@ -31,6 +31,15 @@ class Book extends BaseModel
     public function Circulations(){
         return $this->hasOne('App\Circulation');
     }
+
+    public static function isReserved($id){
+        $result = Reservation::find($id);
+        if(isset($result)){
+            return true;
+        }
+        return false;
+    }
+
     public function Reservation(){
         return $this->belongsTo('App\Reservation');
     }

@@ -9,9 +9,9 @@
         <li><a href="#">Suggestion</a></li>
         <li class="active">List of Suggestions</li>
     </ol>
- 
 
-   
+
+
 @stop
 
 @section('content')
@@ -26,42 +26,19 @@
                 </span>
             </li>
             <!-- enclose in loop -->
-            <li>
-                <i class="fa fa-user bg-blue"></i>
-                <div class="timeline-item">
-                    <h3 class="timeline-header">Commenting</h3>
-                    <div class="timeline-body">
-                    You can post comments on any reddit link, and read comments that other people have posted. You can even vote on them! Just like links, comments rise and fall in the rankings as people vote on them. The more Upvotes you get, the more your Comment Karma will go up.
+            @foreach($suggestions as $comment)
+                <li>
+                    <i class="fa fa-user bg-blue"></i>
+                    <div class="timeline-item">
+                        <h3 class="timeline-header">{{ $comment->title }}</h3>
+                        <div class="timeline-body">
+                            {{ $comment->body }}
+                        </div>
+                        <div class="timeline-footer">
+                        </div>
                     </div>
-
-                    <div class="timeline-footer">
-                    </div>
-                </div>
-            </li>
-            <li>
-                <i class="fa fa-user bg-blue"></i>
-                <div class="timeline-item">
-                    <h3 class="timeline-header">Commenting</h3>
-                    <div class="timeline-body">
-                    You can post comments on any reddit link, and read comments that other people have posted. You can even vote on them! Just like links, comments rise and fall in the rankings as people vote on them. The more Upvotes you get, the more your Comment Karma will go up.
-                    </div>
-
-                    <div class="timeline-footer">
-                    </div>
-                </div>
-            </li>
-            <li>
-                <i class="fa fa-user bg-blue"></i>
-                <div class="timeline-item">
-                    <h3 class="timeline-header">Commenting</h3>
-                    <div class="timeline-body">
-                    You can post comments on any reddit link, and read comments that other people have posted. You can even vote on them! Just like links, comments rise and fall in the rankings as people vote on them. The more Upvotes you get, the more your Comment Karma will go up.
-                    </div>
-
-                    <div class="timeline-footer">
-                    </div>
-                </div>
-            </li>
+                </li>
+            @endforeach
              <!-- enclose in loop -->
         </ul>
     </div>
@@ -99,10 +76,10 @@
 <script>
     $(function() {
         $('#bookSelect').select2({
-            
+
         });
     });
 </script>
 @endsection
 
-    
+

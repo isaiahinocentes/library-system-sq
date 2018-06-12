@@ -167,7 +167,7 @@ return [
         [
             'text' => 'Statistics',
             'icon' => 'file',
-            'url' => '#',
+            'url' => 'reports',
         ],
     ],
 

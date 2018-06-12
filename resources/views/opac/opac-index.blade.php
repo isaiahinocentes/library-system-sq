@@ -35,6 +35,7 @@
                 </thead>
                 <tbody>
                 @foreach($books as $book)
+                    @if(!App\Book::isReserved($book->id))
                     <tr>
                         <td>{{ $book->id }}</td>
                         <td>{{ $book->title }}</td>
@@ -47,12 +48,16 @@
                             </a>
                         </td>
                     </tr>
+                    @endif
                 @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
+{{--Add comments--}}
+<button><a href="{{ route('opac-com') }}">ADD A COMMENT?</a></button>
 
 {{--MODAL FORM--}}
 <div class="modal fade" id="borrowModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

@@ -27,7 +27,7 @@ Route::get('/home', 'AcquisitionController@index')->name('home');
 Route::prefix('opac')->group(function(){
     Route::get('','OPACController@index')->name('OPAC-index');
     Route::get('getBook/{id?}','OPACController@getBook')->name('OPAC-book');
-
+    Route::get('comment','OPACController@showCommentForm')->name('opac-com');
     //Route::post('reserve','OPACController@reserve')->name('OPAC-qry');
     Route::post('query','OPACController@query')->name('OPAC-qry');
 });

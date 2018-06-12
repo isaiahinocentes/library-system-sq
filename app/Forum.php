@@ -2,10 +2,13 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Forum extends Model
+
+class Forum extends BaseModel
 {
     protected $fillable = ['title', 'body'];
+
+    public static function getInstance($data){
+        return ( isset($data['id']) ) ? Forum::find($data['id']) : new Forum() ;
+    }
 }

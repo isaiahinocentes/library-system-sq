@@ -4,9 +4,12 @@ namespace App;
 
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Reservation extends BaseModel
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'borrower_name',
         'borrower_id',
@@ -34,8 +37,8 @@ class Reservation extends BaseModel
             new Reservation() ;
     }
 
-    public function Books(){
-        return $this->hasMany('App\Book');
+    public function Book(){
+        return $this->hasOne('App\Book', 'id', 'book_id');
     }
 
 }
