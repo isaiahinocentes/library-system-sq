@@ -21,10 +21,10 @@ class CirculationSeeder extends Seeder
                 $circ = new Circulation();
                 $circ->person_id = $arr[0];
                 $circ->book_id = $arr[1];
-                $circ->borrowed_at = $arr[2];
-                $circ->return_by = $arr[3];
-                $circ->returned_at = $arr[4];
-                $circ->added_by = $arr[5];
+                $circ->borrowed_at = Carbon\Carbon::now();
+                $circ->return_by = Carbon\Carbon::tomorrow();
+                $circ->returned_at = null;
+                $circ->user_id = $arr[5];
                 $circ->save();
             }
         }

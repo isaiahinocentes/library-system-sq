@@ -92,14 +92,14 @@
                   <label for="name" class="col-sm-2 control-label">Name</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" name="user_name" placeholder="Name">
+                    <input type="text" class="form-control" id="name" name="borrower_name" placeholder="Name">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="studentId" class="col-sm-2 control-label">Student ID</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="studentId" name="user_id" placeholder="Student ID">
+                    <input type="text" class="form-control" id="studentId" name="borrower_id" placeholder="Student ID">
                   </div>
                 </div>
 

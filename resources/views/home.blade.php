@@ -43,10 +43,7 @@
                         <td>{{ $book->author }}</td>
                         <td>{{ $book->category }}</td>
                         <td>{{ $book->date }}</td>
-                        @php
-                            $username = App\User::find($book->added_by)->name;
-                            echo "<td>".$username."</td>";
-                        @endphp
+                        <td>{{ $book->User->name }}</td>
                         <td>{{ $book->created_at }}</td>
                         <td>
                             <a href="{{ route('acq-book', ['id' => $book->id]) }}" class="btn  btn-warning btn-xs">

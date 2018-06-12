@@ -17,6 +17,7 @@ class AcquisitionController extends Controller
     public function index()
     {
         $books = Book::all();
+
         return view('home')
             ->with('books', $books);
     }
@@ -47,8 +48,7 @@ class AcquisitionController extends Controller
             $attr = array_add($attr,'id', $id);
         }
 
-        $attr = array_add($attr, 'added_by', auth()->user()->id);
-
+        $attr = array_add($attr, 'user_id', auth()->user()->id);
         $result = CF::model('Book')->saveData($attr);
         if($result['status'] == 'success'){
             return redirect()->route('acq-list');

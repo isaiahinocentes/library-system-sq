@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Book extends BaseModel
@@ -15,17 +14,24 @@ class Book extends BaseModel
         "author",
         "category",
         "date",
-        "added_by"
+        "user_id"
     ];
 
     public static function getInstance($data){
         return ( isset($data['id']) ) ? Book::find($data['id']) : new Book() ;
     }
 
-    public function Circulations(){
-        return $this->belongsToMany('Circulation');
+    //Relationships
+    public function User(){
+        return $this->belongsTo('App\User');
     }
-    public function Reservations(){
-        //return $this->belongsToMany()
+    public function Circulation(){
+        return $this->belongsTo('App\Circulation');
+    }
+    public function Circulations(){
+        return $this->hasOne('App\Circulation');
+    }
+    public function Reservation(){
+        return $this->belongsTo('App\Reservation');
     }
 }

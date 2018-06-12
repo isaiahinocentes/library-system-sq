@@ -43,11 +43,11 @@ class CirculationController extends Controller
             $timestamp = Carbon::now();
             $attr = array_add($attr, 'returned_at', $timestamp);
         }
-        $attr = array_add($attr, 'returned_at', "");
-        $attr = array_add($attr, 'added_by', auth()->user()->id);
+        $attr = array_add($attr, 'returned_at', null);
+        $attr = array_add($attr, 'user_id', auth()->user()->id);
 
         $result = CF::model('Circulation')->saveData($attr);
-
+        //dd($result);
         if($result['status'] == 'success'){
             return redirect()->route('circ-list');
         } else {

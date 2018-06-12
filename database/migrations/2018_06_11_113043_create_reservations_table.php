@@ -17,11 +17,17 @@ class CreateReservationsTable extends Migration
             $table->increments('id');
             $table->string("borrower_name");
             $table->string("borrower_id");
-            $table->integer("book_id");
+            $table->unsignedInteger("book_id"); //Foreign
             $table->timestamp("reservation_date")->nullable();
             $table->timestamp("reservation_expiration")->nullable();
             $table->timestamps();
             $table->softDeletes();
+        });
+
+        Schema::table('reservations', function(Blueprint $table){
+            $table->foreign('book_id')
+                ->references('id')
+                ->on('books');
         });
     }
 

@@ -15,13 +15,23 @@ class CreateCirculationsTable extends Migration
         Schema::create('circulations', function (Blueprint $table) {
             $table->increments('id');
             $table->string("person_id");
-            $table->integer("book_id");
-            $table->string("borrowed_at")->nullable();
-            $table->string("return_by")->nullable();
-            $table->string("returned_at")->nullable();
-            $table->integer("added_by");
+            $table->unsignedInteger("book_id"); // Foreign
+            $table->timestamp("borrowed_at")->nullable();
+            $table->timestamp("return_by")->nullable();
+            $table->timestamp("returned_at")->nullable();
+            $table->unsignedInteger("user_id"); //Foreign
             $table->timestamps();
             $table->softDeletes();
+        });
+
+        Schema::table('circulations', function(Blueprint $table){
+            $table->foreign('book_id')
+                ->references('id')
+                ->on('books');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
         });
     }
 

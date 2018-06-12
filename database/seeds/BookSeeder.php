@@ -25,7 +25,7 @@ class BookSeeder extends Seeder
                 $book->author = $arr[2];
                 $book->category = $arr[3];
                 $book->date= $arr[4];
-                $book->added_by = $arr[5];
+                $book->user_id = $arr[5];
                 $book->save();
             }
         }

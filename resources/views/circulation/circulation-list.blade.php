@@ -20,7 +20,7 @@
     <div class="container">
         <div class="box box-primary">
             <div class="box-header">
-                <h5 class="box-title">Reservations</h5>
+                <h5 class="box-title">Borrowed</h5>
             </div>
             <div class="box-body">
                 <table id="circulationsTable" class="table table-striped">
@@ -39,6 +39,7 @@
                     </thead>
                     <tbody>
                     @foreach($circulations as $circulation)
+                        @if($circulation->returned_at == null)
                         <tr>
                             <td>{{ $circulation->id }}</td>
                             <td>{{ $circulation->person_id }}</td>
@@ -46,13 +47,7 @@
                             <td>{{ $circulation->borrowed_at }}</td>
                             <td>{{ $circulation->return_by }}</td>
                             <td>{{ $circulation->returned_at }}</td>
-
-                            {{-- Get Username --}}
-                            @php
-                                $username = App\User::find($circulation->added_by)->name;
-                                echo "<td>".$username."</td>";
-                            @endphp
-
+                            <td>{{ $circulation->User->name }}</td>
                             {{-- Show if updated or created--}}
                             @if(isset($circulation->updated_at))
                                 <td>Updated: {{ $circulation->updated_at }}</td>
@@ -69,12 +64,58 @@
                                 </a>
                             </td>
                         </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+<div class="container">
+    <div class="box box-primary">
+        <div class="box-header">
+            <h5 class="box-title">Returned</h5>
+        </div>
+        <div class="box-body">
+            <table id="circulationsTable" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Circulation ID</th>
+                    <th>Borrower ID</th>
+                    <th>Book ID</th>
+                    <th>Borrowed At</th>
+                    <th>Return By</th>
+                    <th>Returned At</th>
+                    <th>Added/Edited By</th>
+                    <th>Date Created/Updated</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($circulations as $circulation)
+                    @if($circulation->returned_at != null)
+                    <tr>
+                        <td>{{ $circulation->id }}</td>
+                        <td>{{ $circulation->person_id }}</td>
+                        <td>{{ $circulation->book_id }}</td>
+                        <td>{{ $circulation->borrowed_at }}</td>
+                        <td>{{ $circulation->return_by }}</td>
+                        <td>{{ $circulation->returned_at }}</td>
+                        <td>{{ $circulation->User->name }}</td>
+                        {{-- Show if updated or created--}}
+                        @if(isset($circulation->updated_at))
+                            <td>Updated: {{ $circulation->updated_at }}</td>
+                        @else
+                            <td>Created: {{ $circulation->returned_at }}</td>
+                        @endif
+                    </tr>
+                    @endif
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 @endsection
 @section('css')
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">

@@ -16,7 +16,7 @@ class CreateForumsTable extends Migration
         Schema::create('forums', function (Blueprint $table) {
             $table->increments('id');
             $table->string("title");
-            $table->multiLineString("body");
+            $table->string("body", 300);
             $table->timestamps();
         });
     }

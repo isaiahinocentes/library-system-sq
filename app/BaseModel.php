@@ -9,7 +9,6 @@ class BaseModel extends Model
     public static function saveData($data){
         try {
             $model = static::getInstance($data);
-
             foreach ($model->fillable as $column){
                 if(array_key_exists($column, $data)){
                     $model[$column] = array_pull($data, $column);
@@ -17,7 +16,6 @@ class BaseModel extends Model
             }
 
             if($model->save()){
-
                 return array(
                     'id'        => $model->id,
                     'status'    => 'success',

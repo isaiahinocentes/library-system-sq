@@ -6,6 +6,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateBooksTable extends Migration
 {
+
+
     /**
      * Run the migrations.
      *
@@ -20,9 +22,14 @@ class CreateBooksTable extends Migration
             $table->string("author")->nullable();
             $table->string("category")->nullable();
             $table->string("date")->nullable();
-            $table->integer("added_by")->nullable();
+            $table->unsignedInteger("user_id");
             $table->timestamps();
             $table->softDeletes();
+        });
+
+        Schema::table('books', function(Blueprint $table){
+            $table->foreign('user_id')
+                ->references('id')->on('users');
         });
     }
 

@@ -24,6 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         $books = Book::all();
+        //dd($books[0]->User->name);
         return view('home')
             ->with('books', $books);
     }

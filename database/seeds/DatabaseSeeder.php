@@ -11,10 +11,9 @@ class DatabaseSeeder extends Seeder
         $this->call(
             [
                 BookSeeder::class,
+                ForumSeeder::class,
                 CirculationSeeder::class,
-                InvoiceSeeder::class,
                 AccountSeeder::class,
-
             ]
         );
 
