@@ -43,4 +43,13 @@ class OPACController extends Controller
         return redirect()->route('OPAC-index')
             ->with('result', $result);
     }
+    public function reserve(Request $request){
+        $data = $request->all();
+        $data = Reservation::validate($data);
+        $result = CF::model('Reservation')->saveData($data);
+        dd($result);
+        return redirect()->route('OPAC-index')
+            ->with('result', $result);
+    }
+    
 }

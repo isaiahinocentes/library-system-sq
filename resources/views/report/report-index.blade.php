@@ -22,11 +22,11 @@
             <div class="col-md-6">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h5 class="box-title">Borrows for the Week</h5>
+                        <h5 class="box-title">Number of borrows for Today</h5>
                     </div>
                     <div class="box-body">
                         <div class="chart">
-                            <canvas id="weekChart" style="height: 296px; width: 605px;" width="605" height="296"></canvas>
+                            <canvas id="todayChart" style="height: 340px; width: 605px;" width="605" height="340"></canvas>
                         </div>
                     </div>
                 </div>
@@ -34,11 +34,11 @@
             <div class="col-md-6">
                  <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h5 class="box-title">Borrows for the Month</h5>
+                        <h5 class="box-title">Number of borrows for the Week</h5>
                     </div>
                     <div class="box-body">
                         <div class="chart">
-                            <canvas id="monthChart" style="height: 296px; width: 605px;" width="605" height="296"></canvas>
+                            <canvas id="monthChart" style="height: 340px; width: 605px;" width="605" height="340"></canvas>
                         </div>
                     </div>
                 </div>
@@ -66,8 +66,114 @@
 @stop
 
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
+<script src="https://codepen.io/anon/pen/aWapBE.js"></script>
 <script>
-
+    $(document).ready(function(){
+        var $total = 0;
+        var $label = [];
+        var $dataset = [];
+        $.ajax({
+            type: "GET",
+            url: './reports/getcount',
+            data: "",
+            success: function(data) {
+                console.log(data);
+                $label = [];
+                $dataset = [];
+                data.forEach(function(test){
+                    $label.push(test.TITLE);
+                    $dataset.push(test.NUM);
+                });
+                var ctx = $("#todayChart");
+                var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: $label,
+                    datasets: [{
+                        label: '# of borrows',
+                        data: $dataset,
+                        backgroundColor:  palette(['tol', 'qualitative'], $dataset.length).map(function(hex) {
+                            return '#' + hex;
+                        }),
+                       
+                    }]
+                },
+                
+            });
+            }
+        });
+        $.ajax({
+            type: "GET",
+            url: './reports/getweek',
+            data: "",
+            success: function(data) {
+                console.log(data);
+                $label = [];
+                $dataset = [];
+                data.forEach(function(test){
+                    $label.push(test.TITLE);
+                    $dataset.push(test.NUM);
+                });
+                var ctx = $("#monthChart");
+                var myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: $label,
+                    datasets: [{
+                        label: '# of borrows',
+                        data: $dataset,
+                        backgroundColor:  palette('tol-sq', $dataset.length).map(function(hex) {
+                            return '#' + hex;
+                        }),
+                       
+                    }]
+                },
+                
+            });
+            }
+        });
+        $.ajax({
+            type: "GET",
+            url: './reports/getall',
+            data: "",
+            success: function(data) {
+                console.log(data);
+                $label = [];
+                $dataset = [];
+                data.forEach(function(test){
+                    $label.push(test.TITLE);
+                    $dataset.push(test.NUM);
+                });
+                var ctx = $("#allChart");
+                var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: $label,
+                    datasets: [{
+                        label: '# of borrows',
+                        data: $dataset,
+                        backgroundColor:  palette('tol', $dataset.length).map(function(hex) {
+                            return '#' + hex;
+                        }),
+                        
+                       
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+                
+            });
+            }
+        });
+    });
+    
 </script>
 @endsection

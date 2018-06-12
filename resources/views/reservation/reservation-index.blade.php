@@ -43,10 +43,8 @@
                         <td>{{ $res->reservation_date }}</td>
                         <td>{{ $res->reservation_expiration }}</td>
                         <td>
-                            <a href="{{ route('res-del', ['id' => $res->id]) }}">
-                                <button>
-                                    Release
-                                </button>
+                            <a href="{{ route('res-del', ['id' => $res->id]) }}" class="btn  btn-danger btn-sm">
+                                <i class="fa fa-trash"style="margin-right:4px"></i>Release
                             </a>
                         </td>
                     </tr>

@@ -30,6 +30,7 @@ Route::prefix('opac')->group(function(){
     Route::get('comment','OPACController@showCommentForm')->name('opac-com');
     //Route::post('reserve','OPACController@reserve')->name('OPAC-qry');
     Route::post('query','OPACController@query')->name('OPAC-qry');
+    Route::post('query','OPACController@reserve')->name('OPAC-reserve');
 });
 
 //Acquisition Routes
@@ -78,4 +79,7 @@ Route::prefix('suggestion')->group(function(){
 //Reports Routes
 Route::prefix('reports')->group(function (){
     Route::get('', 'ReportController@index')->name('rep-list');
+    Route::get('getcount', 'ReportController@getCount')->name('rep-count');
+    Route::get('getweek', 'ReportController@getWeek')->name('rep-week');
+    Route::get('getall', 'ReportController@getAll')->name('rep-all');
 });

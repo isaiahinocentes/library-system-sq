@@ -54,10 +54,13 @@
             </table>
         </div>
     </div>
+    <a href="{{ route('opac-com') }}" class="btn circle pull-right" style="padding:2%"><i class="fa fa-comment fa-lg" style="color: #ffffff"></i></a>
 </div>
 
 {{--Add comments--}}
-<button><a href="{{ route('opac-com') }}">ADD A COMMENT?</a></button>
+
+   
+
 
 {{--MODAL FORM--}}
 <div class="modal fade" id="borrowModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -68,7 +71,7 @@
                 <h4 class="modal-title" id="myModalLabel">Reservation Details</h4>
         </div>
         <div class="modal-body">
-        <form class="form-horizontal" action="{{ route('OPAC-qry') }}" method="POST">
+        <form class="form-horizontal" action="{{ route('OPAC-reserve') }}" method="POST">
             @csrf
             <div class="box-body">
                 <div class="form-group">
@@ -124,6 +127,59 @@
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<style>
+    
+    @circle: #558b2f;
+    @colorLines: #558b2f;
+
+    .circle{
+        height: 60px;
+        width: 60px;
+        display: flex;
+        transition: 0.2s all;
+        text-align: center;
+        justify-content: center;
+        background-color: #5cb85c;
+        -webkit-box-shadow: 0 6px 10px 0 rgba(0,0,0,0.3);
+        box-shadow: 0 6px 10px 0 rgba(0,0,0,0.3);
+        border: none;
+        outline: none;
+        border-radius: 50%;  
+        &:hover
+            {
+                -webkit-box-shadow: 0 8px 15px 0 rgba(0,0,0,0.3);
+            box-shadow: 0 8px 15px 0 rgba(0,0,0,0.4);	
+            }
+        span {
+            width: 26px;
+            height: 2px;
+            display: flex;
+            background-color: @colorLines;
+            flex-wrap: wrap;
+            &:before,
+            &:after {
+            content: "";
+            width: 26px;
+            height: 100%;
+            background-color: @colorLines;
+            border-radius: 100px;
+            transition: transform .2s ease-out;
+            position: relative;
+            display: flex;  
+            flex-grow: 1;
+            }
+            &:before {
+            bottom: 8px;
+            }
+            &:after {
+            top: 6px;
+            }
+    }
+  
+}
+  
+    
+</style>
 @stop
 
 @section('js')
