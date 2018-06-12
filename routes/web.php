@@ -77,5 +77,5 @@ Route::prefix('suggestion')->group(function(){
 
 //Reports Routes
 Route::prefix('reports')->group(function (){
-    Route::get('', 'ReportsController@index')->name('rep-list');
+    Route::get('', 'ReportController@index')->name('rep-list');
 });

@@ -3,7 +3,7 @@
 @section('title', 'Suggestion - LMS')
 
 @section('content_header')
-    <h1>Suggestion</h1>
+
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Suggestion</a></li>
@@ -16,29 +16,54 @@
 
 @section('content')
 <div class="row"><br></div>
+<div class="row"><br></div>
 <div class="container">
-    <div class="box box-primary">
-        <div class="box-header">
-            <h5 class="box-title">Search Book</h5>
-            <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            </div>
+   <div class="row">
+        <ul class="timeline">
+            <li class="time-label">
+                <span class="bg-green">
+                    Comments and Suggestions
+                </span>
+            </li>
+            <!-- enclose in loop -->
+            <li>
+                <i class="fa fa-user bg-blue"></i>
+                <div class="timeline-item">
+                    <h3 class="timeline-header">Commenting</h3>
+                    <div class="timeline-body">
+                    You can post comments on any reddit link, and read comments that other people have posted. You can even vote on them! Just like links, comments rise and fall in the rankings as people vote on them. The more Upvotes you get, the more your Comment Karma will go up.
+                    </div>
 
-        </div>
-        <div class="box-body" style="padding:20px;">
-            <div class="selection">
-                <select id ="bookSelect" class="form-control select2-container input-lg step2-select" style="width:100%" >
-                    <option value="" disabled selected>Search book...</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                </select>
-            </div>
-        </div>
-        <div class="box-footer">
-        </div>
+                    <div class="timeline-footer">
+                    </div>
+                </div>
+            </li>
+            <li>
+                <i class="fa fa-user bg-blue"></i>
+                <div class="timeline-item">
+                    <h3 class="timeline-header">Commenting</h3>
+                    <div class="timeline-body">
+                    You can post comments on any reddit link, and read comments that other people have posted. You can even vote on them! Just like links, comments rise and fall in the rankings as people vote on them. The more Upvotes you get, the more your Comment Karma will go up.
+                    </div>
+
+                    <div class="timeline-footer">
+                    </div>
+                </div>
+            </li>
+            <li>
+                <i class="fa fa-user bg-blue"></i>
+                <div class="timeline-item">
+                    <h3 class="timeline-header">Commenting</h3>
+                    <div class="timeline-body">
+                    You can post comments on any reddit link, and read comments that other people have posted. You can even vote on them! Just like links, comments rise and fall in the rankings as people vote on them. The more Upvotes you get, the more your Comment Karma will go up.
+                    </div>
+
+                    <div class="timeline-footer">
+                    </div>
+                </div>
+            </li>
+             <!-- enclose in loop -->
+        </ul>
     </div>
 </div>
 
