@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Circulation;
+use App\Book;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Library\ClassFactory as CF;
@@ -26,12 +27,16 @@ class CirculationController extends Controller
         //Id is not null, update form show
         if(isset($id)){
             $circulation = Circulation::find($id);
+            $books = Book::all();
             return view('circulation/circulation-form')
                 ->with('id', $id)
-                ->with('circulation', $circulation);
+                ->with('circulation', $circulation)
+                ->with('books',$books);
         }
         else{
-            return view('circulation/circulation-form');
+            $books = Book::all();
+            return view('circulation/circulation-form')
+                        ->with('books',$books);
         }
     }
 
