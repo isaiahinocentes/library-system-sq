@@ -39,7 +39,7 @@ class OPACController extends Controller
         $data = $request->all();
         $data = Reservation::validate($data);
         $result = CF::model('Forum')->saveData($data);
-        dd($result);
+        //dd($result);
         return redirect()->route('OPAC-index')
             ->with('result', $result);
     }
@@ -47,9 +47,9 @@ class OPACController extends Controller
         $data = $request->all();
         $data = Reservation::validate($data);
         $result = CF::model('Reservation')->saveData($data);
-        dd($result);
+        //dd($result);
         return redirect()->route('OPAC-index')
             ->with('result', $result);
     }
-    
+
 }

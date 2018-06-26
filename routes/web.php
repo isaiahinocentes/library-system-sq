@@ -19,6 +19,8 @@ Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')
     ->name('user-logout');
 
+Route::get('iancruz','HomeController@iancruz');
+
 //Index Routes
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/home', 'AcquisitionController@index')->name('home');
@@ -30,7 +32,7 @@ Route::prefix('opac')->group(function(){
     Route::get('comment','OPACController@showCommentForm')->name('opac-com');
     //Route::post('reserve','OPACController@reserve')->name('OPAC-qry');
     Route::post('query','OPACController@query')->name('OPAC-qry');
-    Route::post('query','OPACController@reserve')->name('OPAC-reserve');
+    Route::post('reserve','OPACController@reserve')->name('OPAC-reserve');
 });
 
 //Acquisition Routes

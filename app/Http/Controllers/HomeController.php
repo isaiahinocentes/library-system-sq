@@ -16,6 +16,10 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    public function iancruz(){
+        return view('')
+    }
+
     /**
      * Show the application dashboard.
      *
